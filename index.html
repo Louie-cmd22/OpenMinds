@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literacy Champions - Empowering Young Readers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+    <header>
+        <nav>
+            <div class="logo">Literacy Champions</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#survey">Survey</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="home" class="hero">
+            <h1>Empowering Parents, Inspiring Readers</h1>
+            <p>Discover how you can help your child unlock the world of reading and build a strong foundation for their future.</p>
+            <a href="#infographic1" class="cta-button">Learn How</a>
+        </section>
+
+        <section id="infographic1">
+            <h2>Understanding Childhood Illiteracy</h2>
+            <div class="infographic-layout">
+                <div class="image-column">
+                    <img src="Assets/test.png" alt="Infographic 1">
+                </div>
+                <div class="text-column">
+                    <h3>About Infographic 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="infographic2">
+            <h2>Tips for Parents</h2>
+            <div class="infographic-container">
+                <img src="Assets/test2.png" alt="Infographic 2 - Tips for Parents">
+            </div>
+            <div class="description">
+                <h3>Practical Ways to Support Your Child's Reading</h3>
+                <p>Learn effective strategies and simple activities you can do at home to foster a love of reading and improve literacy skills.</p>
+                <p>From reading aloud to playing word games, every little bit helps build a confident reader.</p>
+            </div>
+        </section>
+
+        <section id="books-recommendation">
+            <h2>Recommended Books for Parents & Kids</h2>
+            <p class="section-intro">Explore these insightful books to help you support your child's reading journey and find engaging stories for them.</p>
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="book-image-container">
+                            <img src="https://via.placeholder.com/300x450/8BC34A/333333?text=Parenting+Guide" alt="Book Cover 1 - Parenting for Literacy">
+                        </div>
+                        <div class="book-details">
+                            <h3>The Read-Aloud Handbook</h3>
+                            <p>A guide for parents on the importance and techniques of reading aloud to children.</p>
+                            <a href="#" class="learn-more-book">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="book-image-container">
+                            <img src="https://via.placeholder.com/300x450/4CAF50/FFFFFF?text=Kids+Story+1" alt="Book Cover 2 - Fun Kids Story">
+                        </div>
+                        <div class="book-details">
+                            <h3>Adventures in Alphabet Park</h3>
+                            <p>An engaging story that makes learning letters fun for young children.</p>
+                            <a href="#" class="learn-more-book">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="book-image-container">
+                            <img src="https://via.placeholder.com/300x450/2196F3/FFFFFF?text=Early+Reader" alt="Book Cover 3 - Early Reader Book">
+                        </div>
+                        <div class="book-details">
+                            <h3>My First Reading Book</h3>
+                            <p>Simple sentences and captivating illustrations for children beginning to read independently.</p>
+                            <a href="#" class="learn-more-book">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="book-image-container">
+                            <img src="https://via.placeholder.com/300x450/FF9800/333333?text=Activity+Book" alt="Book Cover 4 - Literacy Activities">
+                        </div>
+                        <div class="book-details">
+                            <h3>Fun with Phonics</h3>
+                            <p>An activity book designed to help children understand letter sounds and word formation.</p>
+                            <a href="#" class="learn-more-book">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev-slide" onclick="plusSlides(-1)" aria-label="Previous Book">&#10094;</a>
+                <a class="next-slide" onclick="plusSlides(1)" aria-label="Next Book">&#10095;</a>
+            </div>
+            <br>
+
+            <!-- The dots/circles -->
+            <div style="text-align:center" class="slide-indicators">
+                <button class="dot" onclick="currentSlide(1)" aria-label="Go to Book 1"></button>
+                <button class="dot" onclick="currentSlide(2)" aria-label="Go to Book 2"></button>
+                <button class="dot" onclick="currentSlide(3)" aria-label="Go to Book 3"></button>
+                <button class="dot" onclick="currentSlide(4)" aria-label="Go to Book 4"></button>
+            </div>
+        </section>
+
+        <section id="details">
+            <h2>Key Information & Resources</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h4>The Importance of Early Literacy</h4>
+                    <p>Early literacy skills are crucial for academic success and lifelong learning. Understand the impact here.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Identifying Reading Difficulties</h4>
+                    <p>Learn the common signs that a child might be struggling with reading and when to seek help.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Local Support Programs</h4>
+                    <p>Find resources and programs in your community that offer literacy support for children and families.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Making Reading Fun</h4>
+                    <p>Discover creative ways to make reading an enjoyable activity for your child, not a chore.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Connect With Us</h2>
+            <p>Have questions or want to share your story? We'd love to hear from you.</p>
+            <form action="#">
+                <div>
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="e.g., Jane Doe" required>
+                </div>
+                <div>
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., jane.doe@example.com" required>
+                </div>
+                <div>
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" placeholder="Share your thoughts or questions..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </section>
+
+        <section id="survey">
+            <h2>Help Us Improve!</h2>
+            <p>Your feedback is valuable. Please take a moment to complete our short survey to help us enhance our efforts.</p>
+            <a href="https://forms.gle/placeholder" class="survey-button" target="_blank" rel="noopener noreferrer">Take the Survey</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Literacy Champions. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

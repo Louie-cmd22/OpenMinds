@@ -1,0 +1,843 @@
+/* Literacy Campaign Color Palette - Accessibility Focused */
+:root {
+    --campaign-primary: #005A9C; /* Dark Blue - Trust, Knowledge */
+    --campaign-secondary-bg: #E0F7FA; /* Very Light Cyan/Blue - for backgrounds */
+    --campaign-secondary-text: #00796B; /* Teal - for text like H3s, or accents */
+    --campaign-accent: #E65100; /* Darker Orange - for CTAs, WCAG AA on white text */
+    
+    --neutral-light: #f8f9fa; /* Slightly brighter light gray for backgrounds */
+    --neutral-dark: #212529; /* Slightly softer dark gray for text */
+    --text-light: #ffffff;
+
+    --font-primary: 'Arial', sans-serif;
+    --font-headings: 'Georgia', serif;
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Basic Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+}
+
+/* Global Accessibility Focus Styles */
+/* Ensure high visibility for keyboard users */
+/* Remove default outline for elements that will receive a custom one, */
+/* but ensure custom one is always applied on focus. */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 3px solid var(--campaign-accent, #E65100); /* Fallback color if var is not defined */
+  outline-offset: 2px;
+  box-shadow: 0 0 5px var(--campaign-accent, #E65100); /* Subtle glow */
+}
+
+/* Fallback for browsers not supporting :focus-visible, or as a general style */
+/* Be cautious if elements already have specific :focus styles you want to keep */
+/* For now, this provides a baseline. Specific components can override. */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:not([tabindex="-1"]):focus {
+  /* If specific focus styles are defined elsewhere (like nav links, form inputs), */
+  /* this might be too broad or get overridden. */
+  /* The :focus-visible block above is preferred. */
+  /* Let's rely on specific component focus styles for now and ensure they are good. */
+  /* The user's CSS already has some specific focus styles. */
+  /* This block can be removed if specific styles are comprehensive. */
+}
+
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--neutral-dark);
+    background-color: var(--neutral-light);
+    font-size: 17px; 
+}
+
+/* Skip Link Styling */
+.skip-link {
+    position: absolute;
+    top: -50px; /* Hide off-screen initially, increased to ensure it's fully hidden */
+    left: 0;
+    background: var(--campaign-accent); /* Use campaign accent color */
+    color: var(--text-light);
+    padding: 10px 15px; /* Slightly larger padding */
+    z-index: 10000; 
+    text-decoration: none;
+    border-radius: 0 0 5px 0;
+    box-shadow: var(--shadow-light);
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0; /* Bring into view on focus */
+}
+
+
+/* Header and Navigation */
+header {
+    background-color: var(--campaign-primary); /* Use campaign primary color */
+    color: var(--text-light);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-medium);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+nav .logo {
+    font-family: var(--font-headings);
+    font-size: 1.9rem; /* Slightly larger logo */
+    font-weight: bold;
+    color: var(--text-light);
+    text-decoration: none;
+    letter-spacing: 1px; /* Added letter spacing */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.05rem; /* Slightly larger nav links */
+    padding: 0.6rem 1rem; /* Adjusted padding */
+    border-radius: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative; /* For pseudo-element underline */
+    font-weight: 500; /* Slightly bolder */
+}
+
+nav ul li a::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--campaign-accent); /* Use campaign accent for underline */
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after,
+nav ul li a.active-link::after {
+    width: 70%; 
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: var(--campaign-accent); /* Change text color on hover to accent */
+    outline: 2px solid transparent; /* Ensure outline is managed */
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--text-light); /* Visible focus on dark header */
+    transform: translateY(-2px); 
+}
+
+nav ul li a.active-link {
+    color: var(--campaign-accent); /* Distinct color for active link */
+    font-weight: 700; 
+}
+
+
+/* Hamburger Menu for Mobile */
+.menu-toggle {
+    display: none; /* Hidden by default, shown on mobile */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Section Styling */
+section {
+    padding: 4rem 2rem;
+    min-height: 80vh; /* Give some height to sections for scrolling */
+    border-bottom: 1px solid #ddd;
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+section h2 {
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    color: var(--campaign-primary); /* Use campaign primary for H2 */
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+section h3 {
+    font-family: var(--font-headings);
+    font-size: 1.8rem;
+    color: var(--campaign-secondary-text); /* Use campaign secondary text for H3 */
+    margin-bottom: 1rem;
+}
+
+/* Hero Section */
+.hero {
+    background-color: var(--campaign-secondary-bg); /* Use campaign secondary bg */
+    color: var(--neutral-dark); /* Ensure dark text on light bg */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* Full viewport height minus header */
+}
+
+.hero h1 {
+    font-family: var(--font-headings);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--neutral-dark); /* Dark text for hero title on light bg */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    color: var(--neutral-dark); /* Dark text for hero paragraph on light bg */
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: var(--campaign-accent); /* Use campaign accent */
+    color: var(--text-light);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 25px; /* Rounded button */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--shadow-light);
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background-color: #AF4000; /* Darker shade of campaign-accent for hover/focus */
+    transform: translateY(-2px);
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 3px var(--neutral-dark); /* Clearer focus ring */
+}
+
+/* Infographic Sections */
+.infographic-layout {
+    display: flex;
+    align-items: center; /* Vertically align items if they have different heights */
+    gap: 2rem; /* Space between image and text */
+    margin-bottom: 2rem;
+}
+
+.image-column {
+    flex: 1 1 45%; /* Allow image column to take up to 45% of the width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-column img {
+    max-width: 100%;
+    max-height: 70vh; /* Ensure image is largely visible on screen */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Show entire image, letterbox if necessary */
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-column img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.text-column {
+    flex: 1 1 55%; /* Allow text column to take up to 55% */
+    text-align: left;
+}
+
+.text-column h3 {
+    margin-top: 0; /* Remove default top margin if any */
+}
+
+.text-column p {
+    margin-bottom: 1rem;
+}
+
+/* Styles for the original infographic layout (used by Infographic 2) */
+.infographic-container {
+    text-align: center; /* Centers the image if it's an inline-block or has auto margins */
+    margin-bottom: 2rem;
+}
+
+.infographic-container img {
+    max-width: 80%; /* Constrain image width for centered layout */
+    display: block; /* Allows margin auto to work for centering */
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.infographic-container img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.description { /* Used by Infographic 2 */
+    max-width: 800px;
+    margin: 2rem auto 0; /* Added top margin to separate from image */
+    text-align: left;
+}
+
+.description h3 { 
+    font-family: var(--font-headings);
+    font-size: 1.8rem; 
+    color: var(--campaign-secondary-text); /* Use campaign secondary text */
+    margin-bottom: 1rem;
+}
+
+.description p {
+    margin-bottom: 1rem;
+}
+
+/* Details Section */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detail-item {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.detail-item h4 {
+    font-family: var(--font-headings);
+    color: var(--campaign-primary); /* Use campaign primary */
+    margin-bottom: 0.5rem;
+}
+
+/* Contact Section */
+#contact {
+    background-color: var(--campaign-secondary-bg); /* Use campaign secondary bg */
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#contact form div { /* Wrapper for label + input */
+    margin-bottom: 1rem;
+}
+
+#contact form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--neutral-dark);
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    background-color: #fff; /* Ensure good contrast for input fields */
+}
+
+#contact input[type="text"]:focus,
+#contact input[type="email"]:focus,
+#contact textarea:focus {
+    outline: 2px solid transparent; 
+    border-color: var(--campaign-primary); /* Use campaign primary for focus */
+    box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.4); /* Adjusted shadow to match primary */
+}
+
+#contact textarea {
+    resize: vertical;
+}
+
+#contact button[type="submit"] {
+    align-self: center; /* Center the button in the form */
+}
+
+/* Survey Section */
+#survey {
+    background-color: #ffffff; /* Ensure survey section has a distinct background if needed, or keep neutral-light */
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+#survey h2 {
+    color: var(--campaign-primary); 
+    margin-bottom: 1rem; 
+}
+
+#survey p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--neutral-dark);
+}
+
+.survey-button {
+    display: inline-block;
+    background-color: var(--campaign-secondary-text); /* Use campaign secondary text for survey button bg */
+    color: var(--text-light); /* Light text on darker button */
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-light);
+    border: 2px solid transparent; /* For potential focus style */
+}
+
+.survey-button:hover,
+.survey-button:focus {
+    background-color: #004D40; /* Darker shade of campaign-secondary-text */
+    color: var(--text-light);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-medium);
+    outline: 2px solid transparent;
+    border-color: #004D40; /* Focus indicator */
+}
+
+/* Book Recommendation Slideshow Section */
+#books-recommendation {
+    background-color: var(--campaign-secondary-bg); /* Use campaign secondary bg */
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#books-recommendation .section-intro {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--neutral-dark);
+}
+
+.slideshow-container {
+    max-width: 900px; /* Max width of the slideshow */
+    position: relative;
+    margin: auto;
+    background-color: #fff; /* Background for the slide area */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+}
+
+/* Hide the images by default */
+.slide {
+    display: none; /* Managed by JS */
+    padding: 20px;
+    min-height: 480px; /* Ensure a consistent height for the slide area */
+    box-sizing: border-box;
+}
+
+.slide.active {
+    display: block; /* Or 'flex' if .slide-content uses flex */
+}
+
+.slide-content {
+    display: flex;
+    flex-direction: row; /* Default for larger screens */
+    gap: 2rem;
+    align-items: center;
+    text-align: left;
+}
+
+.book-image-container {
+    flex: 0 0 300px; /* Fixed width for image container */
+    text-align: center;
+}
+
+.book-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.book-details {
+    flex: 1;
+}
+
+.book-details h3 {
+    font-size: 1.7rem;
+    color: var(--campaign-primary); /* Use campaign primary */
+    margin-bottom: 0.75rem;
+}
+
+.book-details p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.learn-more-book {
+    display: inline-block;
+    background-color: var(--campaign-accent); /* Use campaign accent */
+    color: var(--text-light);
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.learn-more-book:hover,
+.learn-more-book:focus {
+    background-color: #AF4000; /* Darker shade of campaign-accent for hover/focus */
+    transform: translateY(-2px);
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 2px var(--text-light), 0 0 0 4px var(--campaign-accent); /* Clearer focus ring, assuming light text on accent bg */
+    color: var(--text-light); /* Ensure text is readable on accent bg */
+}
+
+/* Next & previous buttons */
+.prev-slide, .next-slide {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -30px; /* Adjust based on button size and slide content */
+    color: var(--neutral-dark);
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.next-slide {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev-slide {
+    left: 0;
+}
+
+.prev-slide:hover, .next-slide:hover,
+.prev-slide:focus, .next-slide:focus {
+    background-color: var(--campaign-secondary-text); /* Use campaign secondary text */
+    color: var(--text-light);
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 2px var(--campaign-accent); /* Focus ring with accent color */
+}
+
+/* Dots/bullets/indicators */
+.slide-indicators {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    border: none; /* Reset button border */
+    padding: 0; /* Reset button padding */
+    vertical-align: middle; /* Align properly if text were present */
+}
+
+.dot:focus {
+    outline: 2px solid var(--campaign-accent); /* Clear focus indicator */
+    outline-offset: 2px;
+}
+
+.active-dot, .dot:hover {
+    background-color: var(--campaign-primary); /* Use campaign primary */
+}
+
+/* Fading animation (optional, if JS handles display block/none) */
+.fade {
+  animation-name: fade;
+  animation-duration: 0.8s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Responsive adjustments for slideshow */
+@media (max-width: 768px) {
+    .slide-content {
+        flex-direction: column; /* Stack image and text */
+        text-align: center;
+    }
+    .book-image-container {
+        flex: 0 0 auto; /* Reset flex basis */
+        margin-bottom: 1.5rem;
+        max-width: 250px; /* Smaller image on mobile */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .book-details {
+        text-align: center;
+    }
+    .prev-slide, .next-slide {
+        font-size: 16px;
+        padding: 12px;
+    }
+    .slide {
+        min-height: auto; /* Allow height to adjust on mobile */
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-image-container {
+        max-width: 200px;
+    }
+    .book-details h3 {
+        font-size: 1.5rem;
+    }
+    .learn-more-book {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--neutral-dark);
+    color: var(--neutral-light);
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--campaign-primary); /* Match header background */
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        padding: 1rem 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .infographic-layout {
+        flex-direction: column; /* Stack image and text on smaller screens */
+    }
+
+    .image-column,
+    .text-column {
+        flex-basis: 100%; /* Each column takes full width when stacked */
+    }
+
+    .image-column img {
+        max-height: 50vh; /* Adjust max height for mobile if needed */
+    }
+
+    nav ul.active {
+        display: flex; /* Show when active */
+    }
+
+    nav ul li {
+        margin: 0;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav ul li:last-child a {
+        border-bottom: none;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+        background-color: var(--campaign-accent); /* Use accent for hover on mobile */
+        color: var(--text-light);
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    /* Animate hamburger icon to 'X' */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 3rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cta-button, .survey-button { /* Ensure consistent padding on small screens */
+        padding: 0.8rem 1.3rem;
+        font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    section h3 {
+        font-size: 1.5rem;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr; /* Stack items on very small screens */
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        font-size: 12pt;
+        color: #000;
+        background-color: #fff;
+    }
+
+    header, footer, nav, .menu-toggle, .cta-button, .survey-button, .slideshow-container a.prev-slide, .slideshow-container a.next-slide, .slide-indicators, #contact form button {
+        display: none !important; /* Hide non-essential interactive elements */
+    }
+
+    section {
+        padding: 1cm 0;
+        border-bottom: 1px solid #ccc;
+        min-height: auto;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    a[href^="http"]:after {
+        content: " (" attr(href) ")"; /* Show full URLs for external links */
+        font-size: 0.9em;
+    }
+    
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        page-break-inside: avoid;
+    }
+
+    .infographic-layout, .slide-content {
+        flex-direction: column; /* Stack content for printing */
+    }
+
+    #contact form input, #contact form textarea {
+        border: 1px solid #ccc;
+    }
+
+    #contact form label {
+        font-weight: bold;
+    }
+}
